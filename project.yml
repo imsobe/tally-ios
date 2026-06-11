@@ -1,0 +1,37 @@
+# Tally (iOS) — canonical project definition. The .xcodeproj is generated, not
+# committed: run `xcodegen generate` after cloning (and after editing this file).
+name: Tally
+options:
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "17.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+targets:
+  Tally:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Tally
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.imsobe.tally-ios
+        PRODUCT_NAME: Tally
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: NO
+    info:
+      path: Tally/Info.plist
+      properties:
+        CFBundleDisplayName: Tally
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        # Deep-link contract for review-os: tally://dashboard | habits | habit/<id> | settings
+        CFBundleURLTypes:
+          - CFBundleURLName: com.imsobe.tally-ios
+            CFBundleURLSchemes:
+              - tally
