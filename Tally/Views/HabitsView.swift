@@ -54,6 +54,12 @@ struct HabitsView: View {
             }
         }
         .cardStyle(flush: true)
+        // .contain makes the list its OWN accessibility container: a bare
+        // .accessibilityIdentifier on a container VStack propagates DOWN and
+        // overrides every child element's identifier (all five rows read
+        // "habit-list" in the AX tree, breaking review-os's pin/replay identity —
+        // found live by the docs/21 M8 fork gate).
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("habit-list")
     }
 }
